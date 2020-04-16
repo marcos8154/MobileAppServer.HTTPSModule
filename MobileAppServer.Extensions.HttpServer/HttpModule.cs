@@ -1,18 +1,19 @@
 ﻿using Microsoft.Owin.Hosting;
-using MobileAppServer.EFI;
-using MobileAppServer.ServerObjects;
-using MobileAppServerClient;
+using SocketAppServer.CoreServices;
+using SocketAppServer.CoreServices.CoreServer;
+using SocketAppServer.EFI;
+using SocketAppServer.ManagedServices;
 
 namespace MobileAppServer.Extensions.HttpServer
 {
     public class HttpModule : IExtensibleFrameworkInterface
     {
         public string ExtensionName => "HttpServerModule";
-        public string ExtensionVersion => "1.1.3.0";
+        public string ExtensionVersion => "2.0.0.0";
         public string ExtensionPublisher => "https://github.com/marcos8154";
 
         /// <summary>
-        /// 
+        /// Extension that enables HTTP communication in the SocketAppServer framework
         /// </summary>
         /// <param name="baseAddress">Base address (with port) for the HttpServer</param>
         public HttpModule(string baseAddress)
@@ -21,14 +22,13 @@ namespace MobileAppServer.Extensions.HttpServer
         }
 
         public string BaseAddress { get; }
+        public string MinServerVersion => "2.0.0.0";
 
-        public void Load(Server server)
+        public void Load(IServiceManager serviceManager)
         {
-            Client.Configure("localhost", server.Port, server.BufferSize);
-
-            // Inicia o host OWIN 
+            ILoggingService logging = serviceManager.GetService<ILoggingService>();
             WebApp.Start<Startup>(url: BaseAddress);
-            LogController.WriteLog($"HTTP Module was started on '{BaseAddress}'");
+            logging.WriteLog($"HTTP Module was started on '{BaseAddress}'");
         }
     }
 }

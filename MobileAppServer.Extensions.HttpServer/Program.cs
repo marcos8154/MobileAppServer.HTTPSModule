@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocketAppServer.ManagedServices;
+using System;
 
 namespace MobileAppServer.Extensions.HttpServer
 {
@@ -6,8 +7,9 @@ namespace MobileAppServer.Extensions.HttpServer
     {
         public static void Main(string[] args)
         {
+
             HttpModule module = new HttpModule("http://localhost:9000/");
-            module.Load(new ServerObjects.Server());
+            module.Load(ServiceManager.GetInstance());
 
             Console.ReadKey();
         }
