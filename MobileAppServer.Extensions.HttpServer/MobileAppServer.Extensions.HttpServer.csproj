@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{91803F07-8B12-4C48-B17E-4DDACD4628E0}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MobileAppServer.Extensions.HttpServer</RootNamespace>
     <AssemblyName>MobileAppServer.Extensions.HttpServer</AssemblyName>
