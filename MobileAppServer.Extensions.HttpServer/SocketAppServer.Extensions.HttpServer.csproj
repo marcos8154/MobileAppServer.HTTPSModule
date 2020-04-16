@@ -7,8 +7,8 @@
     <ProjectGuid>{91803F07-8B12-4C48-B17E-4DDACD4628E0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MobileAppServer.Extensions.HttpServer</RootNamespace>
-    <AssemblyName>MobileAppServer.Extensions.HttpServer</AssemblyName>
+    <RootNamespace>SocketAppServer.Extensions.HttpServer</RootNamespace>
+    <AssemblyName>SocketAppServer.Extensions.HttpServer</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
