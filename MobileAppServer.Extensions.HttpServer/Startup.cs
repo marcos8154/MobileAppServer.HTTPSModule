@@ -7,8 +7,8 @@ using Owin;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 
-[assembly: OwinStartup(typeof(MobileAppServer.Extensions.HttpServer.Startup))]
-namespace MobileAppServer.Extensions.HttpServer
+[assembly: OwinStartup(typeof(SocketAppServer.Extensions.HttpServer.Startup))]
+namespace SocketAppServer.Extensions.HttpServer
 {
     public class Startup
     {

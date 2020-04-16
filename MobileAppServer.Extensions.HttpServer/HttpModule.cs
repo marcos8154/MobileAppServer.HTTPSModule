@@ -4,7 +4,7 @@ using SocketAppServer.CoreServices.CoreServer;
 using SocketAppServer.EFI;
 using SocketAppServer.ManagedServices;
 
-namespace MobileAppServer.Extensions.HttpServer
+namespace SocketAppServer.Extensions.HttpServer
 {
     public class HttpModule : IExtensibleFrameworkInterface
     {

@@ -1,7 +1,7 @@
 ﻿using SocketAppServer.ManagedServices;
 using System;
 
-namespace MobileAppServer.Extensions.HttpServer
+namespace SocketAppServer.Extensions.HttpServer
 {
     public class Program
     {

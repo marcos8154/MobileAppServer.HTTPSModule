@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // As informações gerais sobre um assembly são controladas por
 // conjunto de atributos. Altere estes valores de atributo para modificar as informações
 // associada a um assembly.
-[assembly: AssemblyTitle("MobileAppServer.Extensions.HttpServer")]
-[assembly: AssemblyDescription("HTTP Module to MobileAppServer framework")]
+[assembly: AssemblyTitle("SocketAppServer.Extensions.HttpServer")]
+[assembly: AssemblyDescription("HTTP Module to SocketAppServer framework")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("MobileAppServer.Extensions.HttpServer")]
+[assembly: AssemblyProduct("SocketAppServer.Extensions.HttpServer")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
