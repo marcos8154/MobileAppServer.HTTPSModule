@@ -22,7 +22,7 @@ namespace SocketAppServer.Extensions.HttpServer
         }
 
         public string BaseAddress { get; }
-        public string MinServerVersion => "2.0.0.0";
+        public string MinServerVersion => "2.1.0.0";
 
         public void Load(IServiceManager serviceManager)
         {
