@@ -1,5 +1,6 @@
 ﻿using SocketAppServer.CoreServices;
 using SocketAppServer.CoreServices.CoreServer;
+using SocketAppServer.CoreServices.Logging;
 using SocketAppServer.ManagedServices;
 using SocketAppServerClient;
 using System;
@@ -10,9 +11,14 @@ namespace SocketAppServer.Extensions.HttpServer
 {
     public class HTTPController : ApiController
     {
+        public static int rc = 0;
+
+        private ILoggingService logging;
         private ISocketClientConnection GetClient()
         {
             IServiceManager manager = ServiceManager.GetInstance();
+            logging = manager.GetService<ILoggingService>();
+
             ICoreServerService coreServer = manager.GetService<ICoreServerService>();
             ServerConfiguration config = coreServer.GetConfiguration();
             ISocketClientConnection connection = SocketConnectionFactory
@@ -24,6 +30,13 @@ namespace SocketAppServer.Extensions.HttpServer
         public IHttpActionResult HttpGet(string controllerName, string actionName,
             [FromBody] RequestParameter[] parameters)
         {
+            rc += 1;
+            var requestNumber = rc;
+            string parValues = "Params: ";
+            if (parameters != null)
+                foreach (var par in parameters)
+                    parValues += $"{par.Name}={par.Value}; ";
+            logging.WriteLog($"HTTP Module: Request {requestNumber}; Controller: {controllerName}; Action: {actionName}; {parValues}");
             try
             {
                 OperationResult result = ExecuteRequest(controllerName, actionName,
@@ -39,6 +52,7 @@ namespace SocketAppServer.Extensions.HttpServer
                 string msg = ex.Message;
                 if (ex.InnerException != null)
                     msg += $@"\n{ex.InnerException.Message}";
+                logging.WriteLog($"HTTP Module ERROR: Request: {requestNumber}; Error: {msg};", ServerLogType.ERROR);
                 return InternalServerError(new Exception(msg));
             }
         }
@@ -47,6 +61,14 @@ namespace SocketAppServer.Extensions.HttpServer
         public IHttpActionResult HttpPost(string controllerName, string actionName,
             [FromBody] RequestParameter[] parameters)
         {
+            rc += 1;
+            var requestNumber = rc;
+            string parValues = "Params: ";
+            if (parameters != null)
+                foreach (var par in parameters)
+                    parValues += $"{par.Name}={par.Value}; ";
+            logging.WriteLog($"HTTP Module: Request {requestNumber}; Controller: {controllerName}; Action: {actionName}; {parValues}");
+
             try
             {
                 OperationResult result = ExecuteRequest(controllerName, actionName,
@@ -62,6 +84,7 @@ namespace SocketAppServer.Extensions.HttpServer
                 string msg = ex.Message;
                 if (ex.InnerException != null)
                     msg += $@"\n{ex.InnerException.Message}";
+                logging.WriteLog($"HTTP Module ERROR: Request: {requestNumber}; Error: {msg};", ServerLogType.ERROR);
                 return InternalServerError(new Exception(msg));
             }
         }

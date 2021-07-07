@@ -9,7 +9,7 @@ namespace SocketAppServer.Extensions.HttpServer
     public class HttpModule : IExtensibleFrameworkInterface
     {
         public string ExtensionName => "HttpServerModule";
-        public string ExtensionVersion => "2.0.0.0";
+        public string ExtensionVersion => "2.1.41.0";
         public string ExtensionPublisher => "https://github.com/marcos8154";
 
         /// <summary>
